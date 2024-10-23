@@ -1,10 +1,15 @@
 ## AWS Setup Guide - CS 3733 B24 
 Vivek Jagadeesh
 ### Overview
-This guide will help you setup an AWS account and deploy a flask app with a PostgreSQL backend to AWS EC2 and RDS. 
+This guide will help you setup an AWS account and deploy a flask app with a PostgreSQL databse to AWS EC2 and RDS. 
+
+EC2 - Elastic Cloud Compute is an AWS service which allows you to create virtual machines that run on AWS servers. These will run the application 
+
+RDS - Relational Database Services is an AWS service which allows you to run a DBMS server. This will run the database. 
+
 
 ## Warning
-AWS requires a credit card for all accounts. Deviating from the guidelines in these instructions could result in charges
+AWS requires a credit card for all accounts. Deviating from the guidelines in these instructions could result in charges. 
 
 ### Step 1 - Make an AWS account
 1. Head to [aws.amazon.com](https://aws.amazon.com) and click on "create an AWS account" in the top right hand corner. 
@@ -12,9 +17,8 @@ AWS requires a credit card for all accounts. Deviating from the guidelines in th
 3. When prompted, choose a buisiness account and enter WPI's contact information. 
 4. Next, enter billing information. This guide will show you how to use AWS within the free tier, but AWS requires that there be some billing information on file. 
 
-### Step 2 - Spawn an EC2 instance 
-- EC2 (Elastic Cloud Compute) is an AWS service which creates a remote virtual machine which will run our application. We need to create a new instance (VM) before deploying our code. 
-1. In the search bar, search for "EC2", and click on the first option that appears under services. 
+### Step 2 - Launch an EC2 instance 
+1. In the search bar on the AWS management console, search for "EC2", and click on the first option that appears under services. 
 2. Once on the EC2 home page, click on the orange button in the middle of the center column which says "Launch Instance". This should bring you to the following page :
 ![alt text](image.png)
 3. Name your EC2 instance something that you will remember. 
@@ -31,7 +35,6 @@ AWS requires a credit card for all accounts. Deviating from the guidelines in th
 10. You can now launch the instance. 
 
 ### Step 3 - Setting up RDS 
-- RDS (relational database services) allows us to run postgres (or another DBMS) on its own server. This is much faster than if we ran everything on EC2. 
 1. Search for RDS in the search bar and select the first result. 
 2. On the RDS home page, click on create database. 
 3. Select "standard-create" at the top of the page, and then select PostgreSQL as the database engine. 
