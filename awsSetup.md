@@ -1,4 +1,5 @@
 ## AWS Setup Guide - CS 3733 B24 
+Vivek Jagadeesh
 ### Overview
 This guide will help you setup an AWS account and deploy a flask app with a PostgreSQL backend to AWS EC2 and RDS. 
 
@@ -29,6 +30,18 @@ AWS requires a credit card for all accounts. Deviating from the guidelines in th
 ![alt text](image-1.png)
 10. You can now launch the instance. 
 
+### Step 3 - Setting up RDS 
+- RDS (relational database services) allows us to run postgres (or another DBMS) on its own server. This is much faster than if we ran everything on EC2. 
+1. Search for RDS in the search bar and select the first result. 
+2. On the RDS home page, click on create database. 
+3. Select "standard-create" at the top of the page, and then select PostgreSQL as the database engine. 
+4. IMPORTANT: Select the free tier for the instance size. Any other choice will result in charges. 
+5. Continue by adding a name for your database, then add a master user and password. I suggest making both of these postgres. 
+6. Change the instance configuration to db.t3.micro. 
+7. IMPORTANT: in the storage panel, click on storage autoscaling and disable it. 
+8. Set your database to connect to an EC2 resource, and then select the EC2 instance you created earlier. 
+9. Finally, in the additional configuration options, add an initial database name of postgres, and change the backup retention period to 0 days. 
+10. You can now safley create the database. 
 
 
 
@@ -76,13 +89,13 @@ Docker is a tool which allows us to run our code inside of a container. You can 
 6. Finally, in the terminal, run <code>docker login</code> and login using your username and password. 
 
 ## Step 7 - Initial Deployment
-### Step 5A - building the container locally
+### Step 7A - building the container locally
 - First, we need to edit the <code>build.sh</code> and <code>deploy.sh</code> scripts included in this guide. 
 - In <code>build.sh</code>, replace vivekjag1 with your docker hub username. Failing to do so will result in your container not being pushed. 
 - You may also want to replace the repository name (currently listed as softengproduction) if you want to save your containers between iterations/assignments. 
 - In <code>deploy.sh</code>, replace vivekjag1 with your docker hub username again. 
 - Now, run <code>build.sh</code> on your local machine. This may take a few minutes. This is going to use the dockerfile in your repository (see file for detailed walkthrough) to build the container and start your project. 
-### Step 5B - deploying the container to EC2
+### Step B - deploying the container to EC2
 - This is the final step. SSH into your EC2 instance. 
 - Next, we need to pull the container you just pushed to docker hub. Run <code>docker pull yourUsername/YOUR-REPOSITORY-NAME</code>. This will take a second. 
 - Now that the container is pulled, all that we have to do is run it. Simply type <code>docker run -d -p 80:80 YOUR-DOCKER-HUB-USERNAME/YOUR-REPO-NAME </code>, and your container will start. 
