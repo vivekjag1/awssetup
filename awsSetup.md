@@ -48,7 +48,7 @@ AWS requires a credit card for all accounts. Deviating from the guidelines in th
 4. IMPORTANT: Select the free tier for the instance size. Any other choice will result in charges. AWS will default to select Production. Make sure you change it to free tier
 5. Continue by adding a name for your database, then add a master user and password. I suggest making both of these postgres.
 6. Change the instance configuration to db.t3.micro.
-7. IMPORTANT: in the storage panel, click on storage autoscaling and disable it.
+7. IMPORTANT: in the storage panel, click on storage autoscaling and disable it. Also important: make sure you change storage type to General Purpose (gp2). Note - it defaults to gp3, which WILL result in small charges. 
 8. Set your database to connect to an EC2 resource, and then select the EC2 instance you created earlier.
 9. Finally, in the additional configuration options, add an initial database name of postgres, and change the backup retention period to 0 days.
 10. You can now safely create the database.
