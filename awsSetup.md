@@ -69,34 +69,8 @@ AWS requires a credit card for all accounts. Deviating from the guidelines in th
 5. MacOs/Linux users: run "chmod go = [INSERT PATH TO .PEM FILE HERE]" (make sure to include a space around the equals sign)
 6. Now, run the following command <code>ssh ec2-user@[IPV4 ADDRESS HERE] -i [FILE PATH TO .pem FILE HERE]</code>.  (surround path with quotes)
 7. You should now be able to ssh into your ec2 instance. You may get a question asking if you want to connect, just type yes. When you have connected, you will see an eagle and info on the AMI.
-### Step 5 - Enabling  Docker on EC2
-- Once SSHed into EC2, we need to add docker. Run the following commands
-#### Step 5A: Docker and docker-compose
-Note -> for an explanation of docker, see the bottom of the file
-1. <code> sudo yum install docker </code> (This installs docker)
-2. <code> sudo chkconfig docker on </code> (This starts docker auto-start)
-3. <code> sudo systemctl start docker </code>
-4. <code> sudo systemctl enable docker </code>
-5. <code> sudo usermod -a -G docker ec2-user </code>
-6. Now we need to log into docker. Run <code>docker login</code> and enter your docker hub username and password
 
-
-### Step 5B - install Docker compose
-
-
-1. Run  `sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose`
-
-
-
-
-2. Run <code>sudo chmod +x /usr/local/bin/docker-compose</code>
-3. To verify the installation run <code> docker-compose version </code>. You should see a version number (if nothing prints, the installation failed).
-
-
-Now log out of EC2 by typing <code>exit</code>
-
-
-## Step 6 - Docker and Docker Hub
+## Step 5- Docker and Docker Hub
 Docker is a tool which allows us to run our code inside of a container. You can think of containers as virtual machines which are meant to only run our code. Containers are useful because:
 - They standardize the environment (every container built will run the code in the exact same way).
 - They allow us to build the project on our local machines (this is important because EC2 is not powerful enough to build our application).
@@ -106,6 +80,29 @@ Docker is a tool which allows us to run our code inside of a container. You can 
 4. Now, open docker desktop and log into your account. Leave docker open in the background
 5. Now, in the terminal of your local machine, run  <code>docker version</code> to verify the installation.
 6. Finally, in the terminal, run <code>docker login</code> and login using your username and password.
+
+
+
+### Step 6 - Enabling  Docker on EC2
+- Once SSHed into EC2, we need to add docker. Run the following commands
+#### Step 6A: Docker and docker-compose
+Note -> for an explanation of docker, see the bottom of the file
+1. <code> sudo yum install docker </code> (This installs docker)
+2. <code> sudo chkconfig docker on </code> (This starts docker auto-start)
+3. <code> sudo systemctl start docker </code>
+4. <code> sudo systemctl enable docker </code>
+5. <code> sudo usermod -a -G docker ec2-user </code>
+6. Now we need to log into docker. Run <code>docker login</code> and enter your docker hub username and password
+
+
+### Step 6B - install Docker compose
+1. Run  `sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose`
+2. Run <code>sudo chmod +x /usr/local/bin/docker-compose</code>
+3. To verify the installation run <code> docker-compose version </code>. You should see a version number (if nothing prints, the installation failed).
+
+
+Now log out of EC2 by typing <code>exit</code>
+
 
 
 ## Step 7 - Initial Deployment
