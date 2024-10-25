@@ -107,10 +107,9 @@ Now log out of EC2 by typing <code>exit</code>
 
 ## Step 7 - Initial Deployment
 ### Step 7A - building the container locally
-- First, we need to edit the <code>build.sh</code> and <code>deploy.sh</code> scripts included in this guide.
+- First, we need to edit the <code>build.sh</code> script included in this guide.
 - In <code>build.sh</code>, replace vivekjag1 with your docker hub username. Failing to do so will result in your container not being pushed.
 - You may also want to replace the repository name (currently listed as softengproduction) if you want to save your containers between iterations/assignments.
-- In <code>deploy.sh</code>, replace vivekjag1 with your docker hub username again.
 - Now, before we start deploying, we need to add your production database to the docker file.
     - Go back to the aws management console and search for RDS in the search bar. Click on the first item.
     - Click on the "DB Instances (1/40)" tab
